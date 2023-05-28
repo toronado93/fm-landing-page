@@ -373,3 +373,7 @@ body {
     display: inline-flex;
   }
 }
+
+.new-features-on {
+  opacity: 31px;
+}
