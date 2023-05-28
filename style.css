@@ -373,3 +373,7 @@ body {
     display: inline-flex;
   }
 }
+
+.some-changing-about-git {
+  opacity: 31px;
+}
