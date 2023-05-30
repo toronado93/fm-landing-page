@@ -138,7 +138,7 @@ body {
 /* button */
 
 .button {
-  display: inline-flex;
+  display: flex;
   cursor: pointer;
   text-decoration: none;
   border: 0;
@@ -261,6 +261,32 @@ body {
   }
 }
 
+/* CTA */
+
+.cta {
+  position: relative;
+  isolation: isolate;
+  text-align: center;
+}
+
+@media (min-width: 50em) {
+  .cta {
+    text-align: left;
+  }
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-image: url(/images/bg-tablet-pattern.svg),
+    url(/images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat;
+  background-position: -15rem -5rem, 80rem -42rem;
+  opacity: 0.11;
+}
+
 /* UTILITY CLASSES */
 
 @media (min-width: 50em) {
@@ -289,6 +315,19 @@ body {
   width: min(var(--max-width), 100% - var(--padding) * 2);
 
   margin-inline: auto;
+}
+.vertical-align-center {
+  align-items: center;
+}
+
+.justift-self-end-md {
+  justify-self: center;
+}
+
+@media (min-width: 50em) {
+  .justift-self-end-md {
+    justify-self: end;
+  }
 }
 
 :where(.flow :not(:first-child)) {
