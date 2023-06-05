@@ -401,6 +401,64 @@ input:where([type="text"], [type="email"]) {
   opacity: 0.11;
 }
 
+/* Numbered Items */
+
+.numbered-items {
+  counter-reset: count;
+  margin-inline: auto;
+  width: fit-content;
+}
+.numbered-items li {
+  counter-increment: count;
+}
+.numbered-items div::before {
+  content: "0" counter(count);
+  display: flex;
+  align-items: center;
+  font-weight: var(--fw-bold);
+  background-color: var(--clr-accent-400);
+  color: var(--clr-neutral-100);
+  padding: 0 var(--size-500);
+  height: 40px;
+  border-radius: 100vw;
+}
+
+.numbered-items div {
+  display: grid;
+  position: relative;
+  grid-template-columns: min-content 1fr;
+  gap: var(--size-400);
+  align-items: center;
+}
+
+.numbered_items_title::before {
+  content: "";
+  inset: 0;
+  z-index: -1;
+  opacity: 0.3;
+  border-radius: 100vw 0 0 100vw;
+  position: absolute;
+  grid-column: 1/-1;
+  grid-row: 1/2;
+  /* background-color: var(--clr-accent-300); */
+}
+
+@media (max-width: 30em) {
+  .numbered_items_title::before {
+    background-color: var(--clr-accent-300);
+  }
+}
+
+.numbered-items div p {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 50em) {
+  .numbered-items div p {
+    grid-column: 2/-1;
+  }
+}
+
 /* UTILITY CLASSES */
 
 @media (min-width: 50em) {
@@ -424,9 +482,9 @@ input:where([type="text"], [type="email"]) {
 
 .container {
   --max-width: 1100px;
-  --padding: 1rem;
+  --container-padding: 1rem;
   /* This approach (var --padding site seperate containers item from sides) */
-  width: min(var(--max-width), 100% - var(--padding) * 2);
+  width: min(var(--max-width), 100% - var(--container-padding) * 2);
 
   margin-inline: auto;
 }
@@ -446,6 +504,19 @@ input:where([type="text"], [type="email"]) {
 
 :where(.flow :not(:first-child)) {
   margin-top: var(--flow-spacer, 4em);
+}
+
+.text-center {
+  text-align: center;
+}
+@media (max-width: 50em) {
+  .text-center-sm-only {
+    text-align: center;
+  }
+
+  .text-center-sm-only p {
+    margin-inline: auto;
+  }
 }
 
 .even-columns {
@@ -515,6 +586,10 @@ input:where([type="text"], [type="email"]) {
 
 .padding-block-700 {
   padding-block: var(--size-700);
+}
+
+.margin-bottom-700 {
+  margin-block-end: var(--size-700);
 }
 
 .display-sm-none {
