@@ -601,3 +601,6 @@ input:where([type="text"], [type="email"]) {
     display: inline-flex;
   }
 }
+
+.some_changing {
+}
