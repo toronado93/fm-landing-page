@@ -9,3 +9,17 @@ mobile_nav_toggle.addEventListener("click", () => {
   primary_navigation.toggleAttribute("data-visible");
   primaryHeader.toggleAttribute("data-overlay");
 });
+
+const slider = new A11YSlider(document.querySelector(".slider"), {
+  adaptiveHeight: false,
+  dots: true,
+  arrows: false,
+  responsive: {
+    500: {
+      dots: true,
+    },
+    700: {
+      arrows: false,
+    },
+  },
+});
