@@ -7,6 +7,7 @@
   --clr-primary-400: hsl(228, 39%, 23%);
 
   --clr-neutral-900: hsl(232, 12%, 13%);
+  --clr-neutral-200: hsl(0, 0%, 97%);
   --clr-neutral-100: hsl(0 0% 100%);
 
   --ff-primary: "Be Vietnam Pro", sans-serif;
@@ -44,7 +45,7 @@
   --size-900: 5rem;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   :root {
     --fs-body: var(--fs-500);
     --fs-primary-heading: var(--fs-900);
@@ -90,6 +91,7 @@ body {
   line-height: 1.5;
 }
 
+/* If A p doesnt have class make them stay left */
 p:not([class]) {
   opacity: 0.7;
   max-width: 32ch;
@@ -138,7 +140,7 @@ body {
 /* button */
 
 .button {
-  display: flex;
+  display: inline-flex;
   cursor: pointer;
   text-decoration: none;
   border: 0;
@@ -203,15 +205,24 @@ body {
   color: var(--clr-accent-400);
 }
 
-@media (max-width: 50em) {
+@media (max-width: 47em) {
   .primary-navigation {
     display: none;
     position: fixed;
+    /* z-index: 999; */
     padding: var(--size-700);
     inset: 7rem var(--size-400) auto;
+    max-width: 25rem;
+    margin-inline: auto;
     background: var(--clr-neutral-100);
     border-radius: var(--size-100);
     box-shadow: 0em 0em 0.75em rgb(0, 0, 0, 0.05);
+  }
+
+  .primary-header[data-overlay] {
+    /* If you have background shadoe problem */
+    position: relative;
+    z-index: 999;
   }
 
   /* Drop Shadow */
@@ -256,6 +267,10 @@ body {
     display: none;
   }
 
+  .icon-hamburger {
+    display: block;
+  }
+
   .primary-navigation {
     display: none;
   }
@@ -273,7 +288,7 @@ body {
 
 .primary-footer-wrapper {
   display: grid;
-  gap: var(--size-700);
+  gap: var(--size-300);
   grid-template-areas:
     "form"
     "nav"
@@ -289,7 +304,7 @@ body {
   gap: var(--size-700);
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   /* .primary-footer-logo-social {
     flex-direction: column;
   } */
@@ -301,14 +316,16 @@ body {
 
 .primary-footer-form {
   grid-area: form;
-
   display: grid;
   align-content: space-between;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 .primary-footer-form form {
   display: flex;
-  gap: var(--size-200);
+
+  gap: var(--size-300);
 }
 
 input:where([type="text"], [type="email"]) {
@@ -317,13 +334,13 @@ input:where([type="text"], [type="email"]) {
   padding: var(--size-300) var(--size-400);
 }
 
-@media (max-width: 50em) {
+@media (max-width: 53em) {
   .primary-footer-wrapper > * {
     margin-inline: auto;
   }
 }
 
-@media (min-width: 50em) {
+@media (min-width: 53em) {
   .primary-footer-wrapper {
     grid-template-areas: "logo-social nav form";
   }
@@ -369,7 +386,7 @@ input:where([type="text"], [type="email"]) {
   fill: var(--clr-accent-400);
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .social-icon {
     width: var(--size-500);
   }
@@ -383,7 +400,7 @@ input:where([type="text"], [type="email"]) {
   text-align: center;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .cta {
     text-align: left;
   }
@@ -453,15 +470,177 @@ input:where([type="text"], [type="email"]) {
   grid-column: 1 / -1;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .numbered-items div p {
     grid-column: 2/-1;
   }
 }
 
+/* Slider */
+
+.slider {
+  display: flex;
+  gap: var(--size-600);
+  list-style: none;
+}
+
+/* We cant changed actual slider css as it comes from cdn but we can overwritte it */
+
+.a11y-slider-container {
+  margin-block: var(--size-700);
+  margin-inline: var(--size-400);
+}
+
+.slider > * {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 30em) {
+  .slider {
+    scroll-padding-inline: 25px;
+  }
+
+  .a11y-slider-container {
+    margin-inline: var(--size-300);
+  }
+  .slider > * {
+    width: 100%;
+  }
+}
+
+@media (min-width: 40em) {
+  .slider > * {
+    width: 50%;
+  }
+}
+
+@media (min-width: 70em) {
+  /* .a11y-slider-container {
+    margin-inline: var(--size-900);
+  } */
+  .slider > * {
+    margin-inline: auto;
+    width: 22%;
+  }
+}
+
+.slider-content {
+  /* Self Dictruct */
+  /* margin-inline: auto; */
+  border-radius: var(--size-100);
+  padding: var(--size-700) var(--size-600) var(--size-600);
+  background: var(--clr-neutral-200);
+  max-width: 50ch;
+}
+
+.slider img {
+  width: var(--size-800);
+  position: relative;
+  top: 50%;
+  inset: 0;
+  margin-inline: auto;
+  top: 30px;
+}
+
+.a11y-slider-dots {
+  display: flex;
+  margin-block: var(--size-300);
+  justify-content: center;
+  gap: var(--size-300);
+}
+
+.a11y-slider-dots li {
+  display: block;
+  width: 12px;
+  height: 12px;
+}
+
+.a11y-slider-dots li button {
+  display: block;
+  font-size: 0;
+  text-indent: -9999px;
+  background: transparent;
+  border: 1px solid var(--clr-accent-400) !important;
+  width: 100%;
+  height: 100%;
+  border-radius: 100%;
+}
+
+.a11y-slider-dots li button.active {
+  background-color: var(--clr-accent-400);
+}
+
+.slider h3 {
+  margin-top: var(--size-300);
+}
+
+.text-ortaya {
+  padding: var(--size-100) var(--size-300);
+  margin-inline: auto;
+  opacity: 0.7;
+  max-width: 32ch;
+}
+
+/* Hero Section*/
+
+@media (max-width: 47em) {
+  .hero_image {
+    order: -1;
+  }
+}
+
+.hero_image::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  right: 0;
+  top: 0;
+  width: 87%;
+  max-height: 70vh;
+  aspect-ratio: 1 / 1.2;
+  background-image: url(/images/bg-tablet-pattern.svg);
+  background-repeat: no-repeat;
+  background-position: bottom left;
+}
+
+@media (min-width: 47em) {
+  .hero_image::before {
+    width: 45%;
+  }
+}
+
+/* Sales Points */
+/* Here We change Background Image Approach */
+
+/* .sales-points {
+  position: relative;
+}
+
+.sales-points::before {
+  content: url(/images/bg-tablet-pattern.svg);
+  zoom: 40%;
+  position: absolute;
+  z-index: -1;
+  left: 70%;
+  bottom: 100%;
+  width: 100px;
+}
+
+@media (min-width: 47em) {
+  .sales-points::before {
+    zoom: 80%;
+    z-index: -1;
+    left: -50%;
+    top: 50%;
+    width: 100px;
+  }
+} */
+
 /* UTILITY CLASSES */
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .even-columns {
     grid-auto-flow: column;
     grid-auto-columns: 1fr;
@@ -496,7 +675,7 @@ input:where([type="text"], [type="email"]) {
   justify-self: center;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .justift-self-end-md {
     justify-self: end;
   }
@@ -509,7 +688,7 @@ input:where([type="text"], [type="email"]) {
 .text-center {
   text-align: center;
 }
-@media (max-width: 50em) {
+@media (max-width: 47em) {
   .text-center-sm-only {
     text-align: center;
   }
@@ -592,11 +771,15 @@ input:where([type="text"], [type="email"]) {
   margin-block-end: var(--size-700);
 }
 
+.mx-auto {
+  margin-inline: auto;
+}
+
 .display-sm-none {
   display: none;
 }
 
-@media (min-width: 50em) {
+@media (min-width: 47em) {
   .display-md-inline-flex {
     display: inline-flex;
   }
