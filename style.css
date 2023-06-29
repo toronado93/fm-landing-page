@@ -411,8 +411,8 @@ input:where([type="text"], [type="email"]) {
   position: absolute;
   z-index: -1;
   inset: 0;
-  background-image: url(/images/bg-tablet-pattern.svg),
-    url(/images/bg-tablet-pattern.svg);
+  background-image: url(images/bg-tablet-pattern.svg),
+    url(images/bg-tablet-pattern.svg);
   background-repeat: no-repeat;
   background-position: -15rem -5rem, 80rem -42rem;
   opacity: 0.11;
@@ -600,7 +600,7 @@ input:where([type="text"], [type="email"]) {
   width: 87%;
   max-height: 70vh;
   aspect-ratio: 1 / 1.2;
-  background-image: url(/images/bg-tablet-pattern.svg);
+  background-image: url(images/bg-tablet-pattern.svg);
   background-repeat: no-repeat;
   background-position: bottom left;
 }
@@ -619,7 +619,7 @@ input:where([type="text"], [type="email"]) {
 }
 
 .sales-points::before {
-  content: url(/images/bg-tablet-pattern.svg);
+  content: url(images/bg-tablet-pattern.svg);
   zoom: 40%;
   position: absolute;
   z-index: -1;
